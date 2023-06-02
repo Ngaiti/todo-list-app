@@ -2,6 +2,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
+function TodoList({ todos }) {
+  return (
+    <ul>
+      {todos.map((todo, index) => (
+        <li key={index}>{todo}</li>
+      ))}
+    </ul>
+  )
+}
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
@@ -20,6 +30,7 @@ function App() {
       <Button variant="primary" className="ms-3" onClick={addTodo}>
         Add
       </Button>
+      <TodoList todos={todos} />
       <div>{todos}</div>
     </div>
   )
